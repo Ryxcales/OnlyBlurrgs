@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blurrg</title>
+  <link rel="stylesheet" href="blurrg.css">
+</head>
+<body>
+
+<header>
+    <a href="index.html">
+      <img src="Blurrgheader.jpg" alt="Blurrg Header">
+    </a>
+    <nav>
+      <ul>
+        <li>
+          <a href="origins.html">Origins</a>
+        </li>
+        <li>
+          <a href="gang.html">The Gang</a>
+          <ul>
+            <li><a href="blurrg.html">Blurrg</a></li>
+            <li><a href="blurrgina.html">Blurrgina</a></li>
+            <li><a href="blurgette.html">Blurgette</a></li>
+            <li><a href="blurg.html">Blurg</a></li>
+            <li><a href="plurrg.html">Plurrg</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="guild.html">Guild</a>
+          <ul>
+            <li><a href="raiding.html">Blurrg’s Raiding Tips!</a></li>
+          </ul>
+        </li>
+        <li><a href="storys.html">Stories</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<main class="wiki-container">
+
+  <div class="wiki-grid">
+
+    <!-- Left SIDE -->
+    <div class="left-side">
+
+      <section class="quote-box">
+        <p>"Blood, snacks, and bonks since… forever."</p>
+      </section>
+
+      <section class="bio-box">
+    <h2>About Blurrg the Brave Bonker:</h2>
+    <p>
+      Hi. I’m Blurrg. I’m a proud Bloodbeast. I like snacks.
+Especially blood pudding. And croissants. I can smell if you’ve got something. Just hand it over. croak
+
+<br><br> I’m pretty strong. I once bonked N’Zoth. Sylvanas too. And the Jailer. And many other strange things Nervura pointed me at. I don’t ask questions — I just charge. croak
+
+<h2>Partner: Nervura</h2>
+Nervura says I’m her best friend. I think she’s right.
+I kind of raised her. Or she raised me? Doesn’t matter. We’re a team. She doesn’t always know where to go — but I do. I poke her with my snout. Right direction. croak
+
+<h2>My Origin Story</h2>
+I used to be a frog. Or something like that. Then the blood mages got… creative.
+Now I can’t jump like I used to. But I bonk much harder. BONK.
+<h2>My Home</h2>
+I’ve got a lot of siblings. And a girlfriend — Blurrgina.
+She’s beautiful. We live together in a cozy little house in Nazmir.
+Don’t come by uninvited. There are rules. And mud. Lots of mud. croak
+
+<h2>Detective Blurrg</h2>
+Sometimes I solve mysteries. Nervura’s the good cop. I’m the bad cop.
+Unless there are cookies. Then I’m soft. I find things. I understand more than I let on. I might be smart. Maybe. croak
+
+<h2>In Battle</h2>
+When I’m in your group, I might pull enemies by accident. Totally by accident.
+Nervura blames me every time. But she’s the one with the pet out. It wasn’t me. I swear. suspicious croak
+  </section>
+
+    </div>
+
+    <!-- Right SIDE -->
+    <div class="right-side">
+
+      <!-- GALLERY BOX -->
+<div class="img-gallery">
+  <button class="gallery-btn prev">‹</button>
+  <img id="gallery-image" src="11.png" alt="Blurrg image">
+  <button class="gallery-btn next">›</button>
+</div>
+
+      <section class="data-box">
+        <div class="data-item"><strong>Name:</strong> Blurrg</div>
+        <div class="data-item"><strong>Role:</strong> Snack Inspector</div>
+        <div class="data-item"><strong>Favorite Snack:</strong> Banana Beef Pudding </div>
+        <div class="data-item"><strong>Best Friend:</strong> Nervura & Blurrgina</div>
+        <div class="data-item"><strong>Adventure Level:</strong> Champion </div>
+      </section>
+
+  <!-- Zitat -->
+ <section class="quote-box">
+        <p>
+        <h2>Guestbook:</h2>
+        "Would /pet again" Nervura-Blackhand <br>
+        "Do not let him near your books!" Shaere-Frostwolf <br>
+        "Surprisingly good at playing fetch with big swords of mythical quality" Maroel-Ravencrest
+    </p>
+      </section>
+
+    </div>
+
+  </div>
+
+</main>
+<script>
+  const images = [
+    "13.png",
+    "11.png",
+    "12.png"
+  ];
+
+  let currentIndex = 0;
+  const galleryImage = document.getElementById("gallery-image");
+
+  document.querySelector(".next").addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    galleryImage.src = images[currentIndex];
+  });
+
+  document.querySelector(".prev").addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    galleryImage.src = images[currentIndex];
+  });
+</script>
+</body>
+<footer>
+  <p>© 2025 Nervura & Blurrg — All rights reserved.</p>
+</footer>
+</html>
