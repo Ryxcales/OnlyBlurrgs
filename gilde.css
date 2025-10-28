@@ -107,9 +107,9 @@ nav {
 
 /* ========== TOP IFRAME (Raider.IO Summary) ========== */
 .summary-frame {
-  display: flex; /* Flex aktivieren */
-  justify-content: center; /* horizontal zentrieren */
-  align-items: center; /* vertikal zentrieren */
+  display: flex;
+  justify-content: center;
+  align-items: center; 
   width: 100%;
   max-width: 1200px;
   height: 250px;
@@ -155,7 +155,7 @@ nav {
 .mplus-frame {
   display: block;
   width: 100%;
-  height: 700px; /* genug Platz für alles */
+  height: 700px;
   border-radius: 10px;
   border: none;
   margin-bottom: 1rem;
@@ -229,7 +229,7 @@ nav {
 /* ===== FOOTER ===== */
 footer {
   margin-top: 3rem;
-  max-width: 1200px;        /* gleiche Breite wie dein Content */
+  max-width: 1200px;       
   margin: 3rem auto 0 auto;
   padding: 1.5rem 0;
   background-color: #111;
@@ -241,7 +241,7 @@ footer {
 }
 
 footer p {
-  margin: 0;     /* gleiche Breite wie dein Content */
+  margin: 0;  
   margin: 0 auto;     
   color: #aaa;
   transition: color 0.3s ease, text-shadow 0.3s ease;

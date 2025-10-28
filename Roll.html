@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blurrg’s Affection Meter</title>
+  <link rel="stylesheet" href="Roll.css">
+</head>
+<body>
+
+<header>
+  <a href="index.html">
+    <img src="Blurrgheader.jpg" alt="Blurrg Header">
+  </a>
+  <nav>
+    <ul>
+      <li><a href="origins.html">Origins</a></li>
+      <li><a href="gang.html">The Gang</a></li>
+      <li><a href="guild.html">Guild</a></li>
+      <li><a href="storys.html">Stories</a></li>
+      <li><a href="Roll.html" class="active">Blurrg Rating</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="meter-container">
+  <h1>Blurrg Rating!</h1>
+  <p>Roll a D20 and find out how much Blurrg likes you today! <br>
+  (Or... try the secret password 👀)</p>
+
+  <div class="roll-box">
+    <button id="rollButton">🎲 Roll D20</button>
+    <input type="password" id="secretInput" placeholder="Enter secret word...">
+    <button id="secretButton">Unlock</button>
+  </div>
+
+  <div id="resultBox" class="result-box">
+    <img id="blurrgEmote" src="wow.webp" alt="Blurrg Emote" class="emote">
+    <h2 id="resultText">Blurrg is waiting for your roll...</h2>
+  </div>
+</main>
+
+<script>
+const rollButton = document.getElementById("rollButton");
+const resultText = document.getElementById("resultText");
+const blurrgEmote = document.getElementById("blurrgEmote");
+const secretInput = document.getElementById("secretInput");
+const secretButton = document.getElementById("secretButton");
+
+// Emotes – du kannst eigene Bilder nehmen!
+const emotes = {
+  happy: "cool.png",
+  angry: "angy.png",
+  snack: "nom.png",
+  love: "love.png",
+  sleepy: "sleep.png"
+};
+
+// Reaktionen je nach Wurf:
+const reactions = {
+  1: ["Blurrg glares up at you with narrowed eyes, a low, rumbling croak echoing through the air. He takes one slow step forward, as if deeply unappreciative of your existence.", emotes.angry],
+  2: ["He puffs himself up, tail twitching. The message is clear: you’ve entered his swamp, and he’s not impressed.", emotes.angry],
+  3: ["Blurrg lets out a wet snort, turning away dramatically. You are beneath his notice.", emotes.angry],
+  4: ["He gives your boots a cautious sniff, as though deciding whether you’re foe… or snack?!", emotes.snack],
+  5: ["Blurrg’s tiny eyes squint suspiciously. He doesn’t move, but you can feel him silently judging your life choices.", emotes.happy],
+  6: ["He tilts his head, croaking once. He hasn’t decided yet if you’re dangerous—or just weird.", emotes.happy],
+  7: ["Blurrg circles you slowly, nostrils flaring. He’s searching for something… maybe food, maybe a reason to care.", emotes.snack],
+  8: ["He lets out a sharp croak, as if to say, “You may proceed… for now.”", emotes.happy],
+  9: ["Blurrg blinks slowly, clearly unimpressed. He sits down mid-stare, as if you’ve already bored him.", emotes.sleepy],
+  10: ["Blurrg gives you a curious sniff. He keeps watching, unblinking. Neutral feelings.", emotes.happy],
+  11: ["Blurrg sniffs at your bag and gives a soft croak—he definitely smells food. You’re gaining points.", emotes.snack],
+  12: ["He leans forward slightly, tiny eyes glinting with curiosity. There’s potential here.", emotes.love],
+  13: ["Blurrg croaks once, short and firm. Acknowledgment… or warning? Hard to say.", emotes.happy],
+  14: ["He pokes your leg with his snout. A test. “Snack? Snack now?” his eyes seem to ask.", emotes.snack],
+  15: ["Blurrg’s tail gives a single wag. The tension eases; you might just be earning his respect.", emotes.happy],
+  16: ["He steps closer, croaking softly. You catch a glimmer of warmth in his tiny eyes—he’s considering letting you /pet.", emotes.love],
+  17: ["Blurrg sits down in front of you, blinking slowly. He seems comfortable enough to stay awhile.", emotes.sleepy],
+  18: ["He lets out a soft, rumbling croak of approval. You’ve passed his silent test. He deems you acceptable company.", emotes.love],
+  19: ["Blurrg nudges your hand gently, his snout cold and curious. A rare sign of trust from the mighty bloodbeast.", emotes.love],
+  20: ["BLURRG LOVES YOU! Blurrg’s eyes widen as you reveal a bowl of Blood Pudding. He lets out a delighted croak, tail wagging furiously. You are now, unquestionably, his favorite mortal.", emotes.love]
+};
+
+function rollD20() {
+  let roll = Math.floor(Math.random() * 20) + 1;
+  showReaction(roll);
+}
+
+function showReaction(roll) {
+  let closest = Object.keys(reactions).reduce((prev, curr) =>
+    Math.abs(curr - roll) < Math.abs(prev - roll) ? curr : prev
+  );
+  let [text, emote] = reactions[closest];
+  resultText.textContent = `🎲 You rolled a ${roll}! ${text}`;
+  blurrgEmote.src = emote;
+}
+
+// Geheimes Croissant 🥐
+secretButton.addEventListener("click", () => {
+  if (secretInput.value.trim().toLowerCase() === "croissant") {
+    resultText.textContent = "🥐 SECRET FOUND! Blurrg’s eyes light up the moment you whisper the sacred word. With a delighted croak, he flops onto his back, tiny legs wiggling in the air. “Nervura’s friends are my friends!” he seems to say, demanding immediate belly rubs.";
+    blurrgEmote.src = emotes.love;
+  } else {
+    resultText.textContent = "Hmm… wrong word. Blurrg squints at you suspiciously.";
+    blurrgEmote.src = emotes.angry;
+  }
+});
+
+rollButton.addEventListener("click", rollD20);
+</script>
+
+<footer>
+  <p>© 2025 Nervura & Blurrg — All rights reserved.</p>
+</footer>
+
+</body>
+</html>

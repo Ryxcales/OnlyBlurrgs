@@ -33,6 +33,7 @@
         </ul>
       </li>
         <li><a href="storys.html">Stories</a></li>
+              <li><a href="Roll.html">Blurrg Rating</a></li>
     </ul>
   </nav>
 </header>
@@ -42,40 +43,48 @@
   <div class="child">
     <p> I’m Nervura’s best friend, snack inspector, and sometimes the reason we pull extra mobs. Explore my world — you’ll meet my family, my guild, and maybe even Blurrgina!</p>
     <em>You should check out all our Stories! <br>Let me guide you!  <a href="storys.html">Follow me!</a></em> <br><br>
+    <p> Or do you directly want to undergo my judgement? The Blurrg Rating?<br> <a href="Roll.html">Go ahead!</a></p>
   </div>
 
   <div class="child">
     <img src="B1.png" alt="Blurrg & Nervura" class="B1">
   </div>
 
-  <div class="child pet-section">
-    <img src="wow.webp" alt="Blurrg Emote" class="emote">
-    <h2>Give Blurrg a /pet!</h2>
-    <button id="petButton">/pet Blurrg ❤️</button>
-    <p>Blurrg has been pet <span id="petCount">0</span> today!</p>
-  </div>
+  <div class="pet-section">
+  <img src="wow.webp" alt="Blurrg Emote" class="emote">
+  <h2>Give Blurrg a /pet!</h2>
+  <button id="petButton">/pet Blurrg ❤️</button>
+  <p>Blurrg has been pet <span id="petCount">0</span> times!</p>
 </div>
 
 <script>
   const petButton = document.getElementById("petButton");
   const petCountDisplay = document.getElementById("petCount");
 
-  let petCount = localStorage.getItem("blurrgPetCount");
-  if (!petCount) petCount = 0;
-  petCountDisplay.textContent = petCount;
+  const API_URL = "https://api.countapi.xyz";
 
-  petButton.addEventListener("click", () => {
-    petCount++;
-    petCountDisplay.textContent = petCount;
-    localStorage.setItem("blurrgPetCount", petCount);
+  async function updateCount() {
+    const res = await fetch(`${API_URL}/get/onlyblurrg/pets`);
+    const data = await res.json();
+    petCountDisplay.textContent = data.value;
+  }
 
-    petButton.textContent = "Blurrg croaks happily! 🩸";
+  async function addPet() {
+    const res = await fetch(`${API_URL}/hit/onlyblurrg/pets`);
+    const data = await res.json();
+    petCountDisplay.textContent = data.value;
+
+    petButton.textContent = "Blurrg croaks happily!";
     petButton.disabled = true;
     setTimeout(() => {
       petButton.textContent = "/pet Blurrg ❤️";
       petButton.disabled = false;
     }, 1000);
-  });
+  }
+
+  petButton.addEventListener("click", addPet);
+  updateCount(); // lädt aktuellen Stand beim Öffnen
+
 </script>
 
 </body>
